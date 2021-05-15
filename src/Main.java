@@ -1,7 +1,4 @@
-import Concrete.CampaignManager;
-import Concrete.GameManager;
-import Concrete.GameSaleManager;
-import Concrete.GamerManager;
+import Concrete.*;
 import Entities.Campaign;
 import Entities.Game;
 import Entities.Gamer;
@@ -9,7 +6,7 @@ import Entities.Gamer;
 public class Main {
     public static void main(String[] args) {
         Gamer gamer = new Gamer(1234, "Ozan", "ackgozozan@gmail.com", "testpw");
-        GamerManager gamerManager = new GamerManager();
+        GamerManager gamerManager = new GamerManager(new GamerCheckManager());
         gamerManager.add(gamer);
 
         Game game = new Game(1234,"Battlefield 1", 55);

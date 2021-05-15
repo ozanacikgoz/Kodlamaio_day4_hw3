@@ -1,12 +1,20 @@
 package Concrete;
 
+import Abstract.GamerCheckService;
 import Abstract.GamerService;
 import Entities.Gamer;
 
-public class GamerManager extends GamerCheckManager implements GamerService{
+public class GamerManager implements GamerService{
+    GamerCheckService gamerCheckService; // dependency injection
+
+    public GamerManager(GamerCheckService gamerCheckService) {
+        super();
+        this.gamerCheckService = gamerCheckService;
+    }
+
     @Override
     public void add(Gamer gamer) {
-        if (checkIfValid(gamer)) {
+        if (gamerCheckService.checkIfValid(gamer)) {
             System.out.println("User with ID: " + gamer.getId() + " is added successfully.");
         }
         else {
